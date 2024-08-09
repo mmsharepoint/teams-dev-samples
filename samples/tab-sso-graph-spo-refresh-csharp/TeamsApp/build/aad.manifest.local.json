@@ -1,0 +1,126 @@
+{
+    "id": "648a6129-7f6d-43fb-b407-21e9e2cf0cb8",
+    "appId": "7150e932-87fd-4b66-a2ee-6e7e7ecfd371",
+    "name": "sso-tab-aad",
+    "accessTokenAcceptedVersion": 2,
+    "signInAudience": "AzureADMyOrg",
+    "optionalClaims": {
+        "idToken": [],
+        "accessToken": [
+            {
+                "name": "idtyp",
+                "source": null,
+                "essential": false,
+                "additionalProperties": []
+            }
+        ],
+        "saml2Token": []
+    },
+    "requiredResourceAccess": [
+        {
+            "resourceAppId": "00000003-0000-0000-c000-000000000000",
+            "resourceAccess": [
+                {
+                    "id": "e1fe6dd8-ba31-4d61-89e7-88639da4683d",
+                    "type": "Scope"
+                },
+                {
+                    "id": "89fe6a52-be36-487e-b7d8-d061c450a026",
+                    "type": "Scope"
+                },
+                {
+                    "id": "7427e0e9-2fba-42fe-b0c0-848c9e6a8182",
+                    "type": "Scope"
+                }
+            ]
+        },
+        {
+            "resourceAppId": "00000003-0000-0ff1-ce00-000000000000",
+            "resourceAccess": [
+                {
+                    "id": "640ddd16-e5b7-4d71-9690-3f4022699ee7",
+                    "type": "Scope"
+                }
+            ]
+        }
+    ],
+    "oauth2Permissions": [
+        {
+            "adminConsentDescription": "Allows Teams to call the app's web APIs as the current user.",
+            "adminConsentDisplayName": "Teams can access app's web APIs",
+            "id": "3ab66143-a4f1-4f41-8fd4-900cfcf52602",
+            "isEnabled": true,
+            "type": "User",
+            "userConsentDescription": "Enable Teams to call this app's web APIs with the same rights that you have",
+            "userConsentDisplayName": "Teams can access app's web APIs and make requests on your behalf",
+            "value": "access_as_user"
+        }
+    ],
+    "preAuthorizedApplications": [
+        {
+            "appId": "1fec8e78-bce4-4aaf-ab1b-5451cc387264",
+            "permissionIds": [
+                "3ab66143-a4f1-4f41-8fd4-900cfcf52602"
+            ]
+        },
+        {
+            "appId": "5e3ce6c0-2b1f-4285-8d4b-75ee78787346",
+            "permissionIds": [
+                "3ab66143-a4f1-4f41-8fd4-900cfcf52602"
+            ]
+        },
+        {
+            "appId": "d3590ed6-52b3-4102-aeff-aad2292ab01c",
+            "permissionIds": [
+                "3ab66143-a4f1-4f41-8fd4-900cfcf52602"
+            ]
+        },
+        {
+            "appId": "00000002-0000-0ff1-ce00-000000000000",
+            "permissionIds": [
+                "3ab66143-a4f1-4f41-8fd4-900cfcf52602"
+            ]
+        },
+        {
+            "appId": "bc59ab01-8403-45c6-8796-ac3ef710b3e3",
+            "permissionIds": [
+                "3ab66143-a4f1-4f41-8fd4-900cfcf52602"
+            ]
+        },
+        {
+            "appId": "0ec893e0-5785-4de6-99da-4ed124e5296c",
+            "permissionIds": [
+                "3ab66143-a4f1-4f41-8fd4-900cfcf52602"
+            ]
+        },
+        {
+            "appId": "4765445b-32c6-49b0-83e6-1d93765276ca",
+            "permissionIds": [
+                "3ab66143-a4f1-4f41-8fd4-900cfcf52602"
+            ]
+        },
+        {
+            "appId": "4345a7b9-9a63-4910-a426-35363201d503",
+            "permissionIds": [
+                "3ab66143-a4f1-4f41-8fd4-900cfcf52602"
+            ]
+        }
+    ],
+    "identifierUris": [
+        "api://localhost:44302/7150e932-87fd-4b66-a2ee-6e7e7ecfd371"
+    ],
+    "replyUrlsWithType": [
+        {
+            "url": "https://localhost:44302/auth-end.html",
+            "type": "Web"
+        },
+        {
+            "url": "https://localhost:44302/auth-end.html?clientId=7150e932-87fd-4b66-a2ee-6e7e7ecfd371",
+            "type": "Spa"
+        },
+        {
+            "url": "https://localhost:44302/blank-auth-end.html",
+            "type": "Spa"
+        }
+    ]
+}

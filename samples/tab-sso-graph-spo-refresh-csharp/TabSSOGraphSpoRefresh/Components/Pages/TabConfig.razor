@@ -1,0 +1,38 @@
+@page "/config"
+@inject MicrosoftTeams MicrosoftTeams;
+@inject NavigationManager NavigationManager;
+@rendermode InteractiveServer
+
+<div class="config page" id ="tab config">
+        <h1>Tab Configuration Page</h1>
+        <p>
+            This is where you will add your tab configuration options the user 
+            can choose when the tab is added to your team/group chat.
+        </p>
+</div>
+
+@code {
+
+    private Guid _entityId = Guid.NewGuid();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+        {
+            string baseUrl = NavigationManager.BaseUri;
+            if (baseUrl.EndsWith("/")) {
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+            }
+            var settings = new TeamsInstanceSettings
+            {
+                SuggestedDisplayName = "My SPO Token Tab",
+                EntityId = _entityId.ToString(),
+                ContentUrl = $"{baseUrl}/tab",
+                WebsiteUrl = $"{baseUrl}/tab"
+            };
+
+            await MicrosoftTeams.InitializeAsync();
+            await MicrosoftTeams.RegisterOnSaveHandlerAsync(settings);
+        }
+    }
+}

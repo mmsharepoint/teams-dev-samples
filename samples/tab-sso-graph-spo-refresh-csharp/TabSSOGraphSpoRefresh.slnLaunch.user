@@ -1,0 +1,53 @@
+[
+  {
+    "Name": "Microsoft Teams (browser)",
+    "Projects": [
+      {
+        "Path": "TeamsApp\\TeamsApp.ttkproj",
+        "Name": "TeamsApp\\TeamsApp.ttkproj",
+        "Action": "StartWithoutDebugging",
+        "DebugTarget": "Microsoft Teams (browser)"
+      },
+      {
+        "Path": "TabSSOGraphSpoRefresh\\TabSSOGraphSpoRefresh.csproj",
+        "Name": "TabSSOGraphSpoRefresh\\TabSSOGraphSpoRefresh.csproj",
+        "Action": "Start",
+        "DebugTarget": "Start Project"
+      }
+    ]
+  },
+  {
+    "Name": "Microsoft 365 app (browser)",
+    "Projects": [
+      {
+        "Path": "TeamsApp\\TeamsApp.ttkproj",
+        "Name": "TeamsApp\\TeamsApp.ttkproj",
+        "Action": "StartWithoutDebugging",
+        "DebugTarget": "Microsoft 365 app (browser)"
+      },
+      {
+        "Path": "TabSSOGraphSpoRefresh\\TabSSOGraphSpoRefresh.csproj",
+        "Name": "TabSSOGraphSpoRefresh\\TabSSOGraphSpoRefresh.csproj",
+        "Action": "Start",
+        "DebugTarget": "Start Project"
+      }
+    ]
+  },
+  {
+    "Name": "Outlook (browser)",
+    "Projects": [
+      {
+        "Path": "TeamsApp\\TeamsApp.ttkproj",
+        "Name": "TeamsApp\\TeamsApp.ttkproj",
+        "Action": "StartWithoutDebugging",
+        "DebugTarget": "Outlook (browser)"
+      },
+      {
+        "Path": "TabSSOGraphSpoRefresh\\TabSSOGraphSpoRefresh.csproj",
+        "Name": "TabSSOGraphSpoRefresh\\TabSSOGraphSpoRefresh.csproj",
+        "Action": "Start",
+        "DebugTarget": "Start Project"
+      }
+    ]
+  }
+]

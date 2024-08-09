@@ -1,0 +1,81 @@
+﻿@using Azure.Core
+@using Azure.Identity
+@using Microsoft.Graph
+@using Microsoft.Graph.Models
+@using TabSSOGraphSpoRefresh.Contollers
+@inject MicrosoftTeams MicrosoftTeams;
+@inject TeamsUserCredential teamsUserCredential
+@inject IConfiguration Configuration
+@rendermode InteractiveServer
+
+<div class="block">
+    <div class="field">
+        <FluentTextField @bind-Value=siteUrl ReadOnly="true" style="width: 100%;">Site Url</FluentTextField>
+    </div>
+    <div class="field">
+        <FluentTextField @bind-Value=groupId ReadOnly="true" style="width: 100%;">Group / Team ID</FluentTextField>
+    </div>      
+    <div class="field">
+        <FluentTextField @bind-Value=userLogin style="width: 100%;">User Login</FluentTextField>
+    </div>      
+    <div class="button">
+        <FluentButton Appearance="Appearance.Accent" OnClick="ensureSiteUser">Ensure user</FluentButton>
+    </div>
+</div>
+
+@code {
+    string siteUrl;
+    string groupId;
+    string userLogin;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {            
+            await MicrosoftTeams.InitializeAsync();
+            var context = await MicrosoftTeams.GetTeamsContextAsync();
+            if (context.SharepointSite != null)
+            {
+                siteUrl = context.SharepointSite.Url;
+                groupId = context.Team.GroupId;
+            }
+            userLogin = context.User.UserPrincipalName;
+            var tokenCredential = await GetOnBehalfOfCredential();
+            siteUrl = await evalSiteUrl(tokenCredential);
+            StateHasChanged();
+        }
+    }
+
+    private async Task<OnBehalfOfCredential> GetOnBehalfOfCredential()
+    {
+        var config = Configuration.Get<ConfigOptions>();
+        var tenantId = config.TeamsFx.Authentication.OAuthAuthority.Remove(0, "https://login.microsoftonline.com/".Length);
+        AccessToken ssoToken = await teamsUserCredential.GetTokenAsync(new TokenRequestContext(null), new CancellationToken());
+        // Different token gen
+        var obo = new OnBehalfOfCredential(
+            tenantId,
+            config.TeamsFx.Authentication.ClientId,
+            config.TeamsFx.Authentication.ClientSecret,
+            ssoToken.Token
+        );
+        return obo;
+    }
+
+    private async Task<string> evalSiteUrl(TokenCredential obo)
+    {
+        var client = new GraphServiceClient(obo, new string[] { "https://graph.microsoft.com/.default" });
+        var site = await client.Groups[groupId].Sites["root"].GetAsync();
+        return site.WebUrl;
+    }
+
+    private async Task ensureSiteUser()
+    {
+        var config = Configuration.Get<ConfigOptions>();
+        var tenantId = config.TeamsFx.Authentication.OAuthAuthority.Remove(0, "https://login.microsoftonline.com/".Length);
+        AccessToken ssoToken = await teamsUserCredential.GetTokenAsync(new TokenRequestContext(null), new CancellationToken());
+
+        TokenController tokenController = new TokenController();
+
+        var t = tokenController.getSiteUser(config, ssoToken.Token, siteUrl, userLogin);
+    }
+}

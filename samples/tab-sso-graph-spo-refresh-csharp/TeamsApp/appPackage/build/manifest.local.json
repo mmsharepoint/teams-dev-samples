@@ -1,0 +1,50 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.16",
+    "version": "1.0.0",
+    "id": "b64d957b-fdc7-4328-881d-28dbe832c6c4",
+    "packageName": "com.microsoft.teams.extension",
+    "developer": {
+        "name": "Teams App, Inc.",
+        "websiteUrl": "https://www.example.com",
+        "privacyUrl": "https://www.example.com/privacy",
+        "termsOfUseUrl": "https://www.example.com/termsofuse"
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "TabSSOGraphSpoRefreshlocal",
+        "full": "Full name for TabSSOGraphSpoRefresh"
+    },
+    "description": {
+        "short": "Short description of TabSSOGraphSpoRefresh",
+        "full": "Full description of TabSSOGraphSpoRefresh"
+    },
+    "accentColor": "#FFFFFF",
+    "bots": [],
+    "composeExtensions": [],
+    "configurableTabs": [
+        {
+            "configurationUrl": "https://localhost:44302/config",
+            "canUpdateConfiguration": true,
+            "scopes": [
+                "team",
+                "groupchat"
+            ]
+        }
+    ],
+    "staticTabs": [],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": [
+        "localhost:44302"
+    ],
+    "webApplicationInfo": {
+        "id": "7150e932-87fd-4b66-a2ee-6e7e7ecfd371",
+        "resource": "api://localhost:44302/7150e932-87fd-4b66-a2ee-6e7e7ecfd371"
+    }
+}
